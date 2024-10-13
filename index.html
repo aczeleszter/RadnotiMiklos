@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radnóti Miklós Kvíz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+        .correct {
+            color: green;
+            font-weight: bold;
+        }
+        .incorrect {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Radnóti Miklós Kvíz</h1>
+    <form id="quizForm">
+        <div>
+            <p>Melyik egyetemen tanult Radnóti?</p>
+            <input type="radio" id="answer1" name="radnoti" value="a">
+            <label for="answer1">a) Szegedi Tudományegyetem</label><br>
+            <input type="radio" id="answer2" name="radnoti" value="b">
+            <label for="answer2">b) Eötvös Loránd Tudományegyetem</label><br>
+            <input type="radio" id="answer3" name="radnoti" value="c">
+            <label for="answer3">c) Ferenc József Tudományegyetem</label>
+        </div>
+        <button type="submit">Beküld</button>
+    </form>
+    <div id="result"></div>
+
+    <script>
+        document.getElementById("quizForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const answer = document.querySelector('input[name="radnoti"]:checked').value;
+            const resultDiv = document.getElementById("result");
+            const correctAnswer = "Ferenc József Tudományegyetem";
+
+            if (answer === "c") {
+                resultDiv.innerHTML = `<span class="correct">Helyes válasz! Radnóti Miklós a Ferenc József Tudományegyetemen tanult.</span>`;
+            } else {
+                resultDiv.innerHTML = `<span class="incorrect">Helytelen válasz: ${answer}. A helyes válasz: <span class="correct">${correctAnswer}</span></span>`;
+            }
+        });
+    </script>
+</body>
+</html>
